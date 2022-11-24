@@ -6,13 +6,7 @@ import com.example.Proyectsf.service.InvoiceService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PatchMapping
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.PutMapping
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/invoice")
@@ -26,6 +20,7 @@ class InvoiceController {
     @GetMapping
     fun list ():List<Invoice>{
         return invoiceService.list()
+
     }
     @PutMapping
     fun update (@RequestBody invoice: Invoice):ResponseEntity<Invoice>{
@@ -35,5 +30,9 @@ class InvoiceController {
     @PatchMapping
     fun updateTotal (@RequestBody invoice: Invoice):ResponseEntity<Invoice>{
         return ResponseEntity(invoiceService.updateTotal(invoice), HttpStatus.OK)
+    }
+    @GetMapping("/totals/{total}")
+    fun listTotals (@PathVariable("total") total: Double ):ResponseEntity<*>{
+        return ResponseEntity(invoiceService.listTotalMoreThan(total), HttpStatus.OK)
     }
 }
