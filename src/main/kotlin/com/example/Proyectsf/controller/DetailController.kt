@@ -3,6 +3,8 @@ package com.example.Proyectsf.controller
 
 import com.example.Proyectsf.model.Detail
 import com.example.Proyectsf.service.DetailService
+
+
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -34,6 +36,6 @@ class DetailController {
 
     @PatchMapping
     fun updateQuantity (@RequestBody detail: Detail):ResponseEntity<Detail>{
-        return ResponseEntity(detailService.updateQuantity(detail), HttpStatus.OK)
+        return ResponseEntity(detailService.updateName(detail), HttpStatus.OK)
     }
 }

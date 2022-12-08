@@ -14,6 +14,7 @@ class Product {
     var id: Long? = null
     var description : String? = null
     var brand: String? = null
-    @NotBlank
+
     var stock: Long? = null
+    var price: Long? = null
 }

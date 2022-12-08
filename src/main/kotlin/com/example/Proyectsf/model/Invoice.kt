@@ -16,7 +16,7 @@ class Invoice {
     @Column(name="create_at")
     var createAt: Date?=null
     var total: Double?=null
-    @NotBlank
+
     @Column(name="client_id")
     var clientId: Long?=null
 }

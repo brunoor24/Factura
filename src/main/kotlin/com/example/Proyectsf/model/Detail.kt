@@ -13,7 +13,6 @@ class Detail {
     @Column(updatable = false)
     var id: Long? = null
     var quantity: Long? = null
-    @NotBlank
     @Column(name="invoice_id")
     var invoiceId: Long? = null
     @Column(name="product_id")
