@@ -3,6 +3,7 @@ package com.example.Proyectsf.controller
 import com.example.Proyectsf.model.Product
 import com.example.Proyectsf.service.ProductService
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.data.domain.Pageable
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
@@ -24,8 +25,10 @@ class ProductController {
         return productService.save(product)
     }
     @GetMapping
-    fun list ():List<Product>{
-        return productService.list()
+    fun list (product:Product, pageable: Pageable):ResponseEntity<*>{
+        val response= productService.list(pageable,product)
+        return ResponseEntity(response, HttpStatus.OK)
+
     }
     @PutMapping
     fun update (@RequestBody product: Product):ResponseEntity<Product>{
